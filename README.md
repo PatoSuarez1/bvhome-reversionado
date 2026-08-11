@@ -144,6 +144,9 @@ Importante para no prometer de más en una reunión:
 | Las fotos (de la tienda actual) | Stock y plazos de entrega |
 | El 20% de transferencia y las 6 cuotas | Colores/terminaciones por producto |
 | Paleta y aire de la marca | Los puntos sobre las fotos de ambiente |
+| | **Las opiniones: nombres, textos y el 4,9 son inventados** |
+
+> ⚠️ **Antes de publicar hay que reemplazar las opiniones.** Están en `OPINIONES`, dentro de `assets/js/data.js`. Son testimonios ficticios escritos para mostrar el formato: cada uno responde una objeción distinta (plazo de entrega, color real de la tela, fabricación a medida, subida por escalera). Sirven como plantilla de qué pedirle a un cliente real, no para salir al aire.
 
 El carrito guarda en `localStorage`: **no hay checkout ni pasarela de pago**. El cierre de compra sale por WhatsApp con el pedido armado, que es como opera hoy buena parte del rubro en Argentina.
 

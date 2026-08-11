@@ -438,6 +438,41 @@ const AMBIENTES = [
   }
 ];
 
+/* ------------------------- Opiniones -------------------------
+   DEMO: testimonios ficticios. Cada uno responde una objeción real
+   de compra de muebles. Reemplazar por reseñas verdaderas antes de
+   publicar. */
+const OPINIONES = {
+  promedio: 4.9,
+  total: 127,
+  items: [
+    {
+      nombre: 'Malena R.', lugar: 'Palermo, CABA', fecha: 'Marzo 2026',
+      estrellas: 5, producto: 'sofa-sena',
+      titulo: 'Llegó antes de lo que decía',
+      texto: 'Lo pedí calculando que iba a estar para marzo y llegó en 32 días. Me escribieron dos veces por WhatsApp para coordinar, una para avisar que salía de fábrica y otra el día anterior. Cero incertidumbre.'
+    },
+    {
+      nombre: 'Julián P.', lugar: 'Villa Crespo, CABA', fecha: 'Febrero 2026',
+      estrellas: 5, producto: 'sillon-luma',
+      titulo: 'El bouclé es igual a la foto',
+      texto: 'Mi miedo era que el bouclé viniera más grisado que en la web. Es exactamente el mismo tono. La textura incluso se siente mejor en persona de lo que se ve en pantalla.'
+    },
+    {
+      nombre: 'Carolina D.', lugar: 'Rosario, Santa Fe', fecha: 'Enero 2026',
+      estrellas: 5, producto: 'mesa-nuvia',
+      titulo: 'Nos la hicieron en nuestra medida',
+      texto: 'Nuestro comedor es angosto y ninguna mesa de dos metros entraba. Les mandé las medidas del ambiente y me la fabricaron de 1,70 con la misma base. Tardó dos semanas más y valió la pena.'
+    },
+    {
+      nombre: 'Federico M.', lugar: 'Vicente López, GBA', fecha: 'Febrero 2026',
+      estrellas: 4, producto: 'sillon-duna',
+      titulo: 'Lo subieron a un tercero sin ascensor',
+      texto: 'Vivo en un tercer piso por escalera y lo subieron sin cobrarme extra, con dos personas y sin marcar la pared. Le pongo cuatro porque tuve que reprogramar la entrega una vez, pero lo resolvieron bien.'
+    }
+  ]
+};
+
 /* ---------------------- Configuración ---------------------- */
 const CONFIG = {
   descuentoTransferencia: 0.20,

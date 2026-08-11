@@ -113,6 +113,41 @@ $('#lookAdd').addEventListener('click', function () {
   window.BV.openPanel('#cartPanel');
 });
 
+/* ---------- Opiniones ---------- */
+const estrellas = n => Array.from({ length: 5 }, (_, i) =>
+  `<svg class="star${i < n ? ' on' : ''}" viewBox="0 0 24 24" aria-hidden="true">
+     <path d="M12 3.2l2.6 5.5 5.9.8-4.3 4.2 1 6-5.2-2.9-5.2 2.9 1-6-4.3-4.2 5.9-.8z"/>
+   </svg>`).join('');
+
+$('#score').innerHTML = `
+  <div class="score__n">${OPINIONES.promedio.toFixed(1).replace('.', ',')}</div>
+  <div>
+    <div class="score__stars" role="img" aria-label="${OPINIONES.promedio} de 5">
+      ${estrellas(Math.round(OPINIONES.promedio))}
+    </div>
+    <p class="score__t">${OPINIONES.total} opiniones verificadas</p>
+  </div>`;
+
+$('#opiniones').innerHTML = OPINIONES.items.map((o, i) => {
+  const p = byId(o.producto);
+  return `
+  <article class="tcard reveal reveal-d${(i % 4) + 1}">
+    <div class="tcard__stars" role="img" aria-label="${o.estrellas} de 5 estrellas">${estrellas(o.estrellas)}</div>
+    <h3 class="tcard__t">${o.titulo}</h3>
+    <p class="tcard__q">${o.texto}</p>
+    <footer class="tcard__f">
+      <div class="tcard__who">
+        <b>${o.nombre}</b>
+        <span>${o.lugar} · ${o.fecha}</span>
+      </div>
+      ${p ? `<a class="tcard__p" href="producto.html?id=${p.id}">
+        <img src="${IMG(p)}" alt="" loading="lazy" width="44" height="54">
+        <span>Compró<b>${p.nombre}</b></span>
+      </a>` : ''}
+    </footer>
+  </article>`;
+}).join('');
+
 /* ---------- Visto recientemente ---------- */
 const seen = Store.seen.map(byId).filter(Boolean);
 if (seen.length >= 3) {
