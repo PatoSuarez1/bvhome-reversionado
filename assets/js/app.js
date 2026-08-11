@@ -40,7 +40,10 @@ const ICON = {
        + '<path fill="currentColor" stroke="none" d="M16.56 14.24c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.76-1.85-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.06s.89 2.39 1.01 2.56c.12.17 1.74 2.66 4.22 3.73.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/>',
   ig:    '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/>'
 };
-const svg = (path, cls = '') => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${path}</svg>`;
+/* Todo ícono generado por JS sale con la clase `ico`, que le da tamaño y
+   trazo por defecto. Sin eso, en un contenedor sin reglas propias el SVG
+   se estira a 300x150 y el trazo se rellena de negro. */
+const svg = (path, cls = '') => `<svg class="ico ${cls}" viewBox="0 0 24 24" aria-hidden="true">${path}</svg>`;
 
 /* ---------- Estado persistente ---------- */
 const load = (k, f) => { try { return JSON.parse(localStorage.getItem(k)) ?? f; } catch { return f; } };
