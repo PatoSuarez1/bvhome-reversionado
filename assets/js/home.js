@@ -142,7 +142,7 @@ $('#opiniones').innerHTML = OPINIONES.items.map((o, i) => {
       </div>
       ${p ? `<a class="tcard__p" href="producto.html?id=${p.id}">
         <img src="${IMG(p)}" alt="" loading="lazy" width="44" height="54">
-        <span>Compró<b>${p.nombre}</b></span>
+        <span>Compró <b>${p.nombre}</b></span>
       </a>` : ''}
     </footer>
   </article>`;
