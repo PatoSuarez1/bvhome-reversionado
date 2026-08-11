@@ -9,6 +9,12 @@ const $  = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const byId = id => CATALOGO.find(p => p.id === id);
 const IMG = p => `assets/img/productos/${p.img}`;
+/* srcset: el celular baja 480px en vez de 1024px */
+const SRCSET = p => {
+  const n = p.img.replace(/\.webp$/, '');
+  return `assets/img/productos/${n}-480.webp 480w, assets/img/productos/${n}-768.webp 768w, assets/img/productos/${p.img} 1024w`;
+};
+const SIZES = '(max-width: 560px) 50vw, (max-width: 1080px) 33vw, 23vw';
 
 const fmt = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 });
 const money = n => fmt.format(Math.round(n));
@@ -75,12 +81,18 @@ const Store = {
   get count() { return this.cart.reduce((a, l) => a + l.qty, 0); },
   get subtotal() { return this.cart.reduce((a, l) => a + byId(l.id).precio * l.qty, 0); }
 };
-window.BV = { Store, byId, money, transfer, cuota, IMG, ICON, svg, $, $$, fmt };
+window.BV = { Store, byId, money, transfer, cuota, IMG, SRCSET, SIZES, ICON, svg, $, $$, fmt };
 
 /* ---------- Toast ---------- */
 let toastBox;
 function toast(msg, icon = '') {
-  if (!toastBox) { toastBox = document.createElement('div'); toastBox.className = 'toasts'; document.body.append(toastBox); }
+  if (!toastBox) {
+    toastBox = document.createElement('div');
+    toastBox.className = 'toasts';
+    toastBox.setAttribute('role', 'status');       // lo anuncia el lector de pantalla
+    toastBox.setAttribute('aria-live', 'polite');
+    document.body.append(toastBox);
+  }
   const el = document.createElement('div');
   el.className = 'toast';
   el.innerHTML = (icon ? svg(icon) : '') + `<span>${msg}</span>`;
@@ -109,7 +121,9 @@ function cardHTML(p, i = 0) {
   <article class="card reveal reveal-d${(i % 4) + 1}" data-id="${p.id}">
     <div class="card__media">
       <a href="producto.html?id=${p.id}" aria-label="${p.nombre}">
-        <img src="${IMG(p)}" alt="${p.nombre}" loading="lazy" decoding="async" width="640" height="800">
+        <img src="assets/img/productos/${p.img.replace(/\.webp$/, '-768.webp')}"
+             srcset="${SRCSET(p)}" sizes="${SIZES}"
+             alt="${p.nombre}" loading="lazy" decoding="async" width="640" height="800">
       </a>
       <div class="card__flags">
         ${out ? '<span class="flag flag--out">Sin stock</span>' : ''}
@@ -185,21 +199,40 @@ document.body.insertAdjacentHTML('beforeend', `
 
 /* ---------- Panel abrir/cerrar ---------- */
 const scrim = $('#scrim');
-let openEl = null;
+const FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
+let openEl = null, lastFocus = null;
+
 function openPanel(sel) {
   closeAll();
   openEl = $(sel); if (!openEl) return;
-  openEl.classList.add('on'); scrim.classList.add('on');
+  lastFocus = document.activeElement;              // para devolver el foco al cerrar
+  openEl.classList.add('on');
+  if (!openEl.classList.contains('modal')) scrim.classList.add('on'); // el modal trae su propio fondo
+  openEl.setAttribute('aria-modal', 'true');
   document.body.classList.add('is-locked');
-  const f = openEl.querySelector('input, button');
+  const f = openEl.querySelector(FOCUSABLE);
   setTimeout(() => f && f.focus(), 120);
 }
 function closeAll() {
-  $$('.panel.on, .search-ov.on, .modal.on').forEach(e => e.classList.remove('on'));
+  $$('.panel.on, .search-ov.on, .modal.on').forEach(e => {
+    e.classList.remove('on');
+    e.removeAttribute('aria-modal');
+  });
   scrim.classList.remove('on');
   document.body.classList.remove('is-locked');
   openEl = null;
+  if (lastFocus && lastFocus.isConnected) { lastFocus.focus(); lastFocus = null; }
 }
+
+/* El Tab no se escapa del panel abierto */
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Tab' || !openEl) return;
+  const f = [...openEl.querySelectorAll(FOCUSABLE)].filter(el => el.offsetParent !== null);
+  if (!f.length) return;
+  const first = f[0], last = f[f.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
 window.BV.openPanel = openPanel;
 document.addEventListener('click', e => {
   if (e.target.closest('[data-close]')) { closeAll(); return; }
@@ -366,8 +399,7 @@ function quickView(id) {
         <a class="btn btn-ghost" href="producto.html?id=${p.id}">Ver ficha</a>
       </div>
     </div>`;
-  $('#qvModal').classList.add('on');
-  document.body.classList.add('is-locked');
+  openPanel('#qvModal');
   $$('#qvBox [data-qvc]').forEach(b => b.addEventListener('click', () => {
     $$('#qvBox [data-qvc]').forEach(x => x.classList.remove('on')); b.classList.add('on');
   }));

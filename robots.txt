@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Las combinaciones de filtros generan URLs infinitas sin contenido propio
+Disallow: /tienda.html?*color=
+Disallow: /tienda.html?*max=
+Disallow: /tienda.html?*sort=
+
+Sitemap: https://patosuarez1.github.io/bvhome-reversionado/sitemap.xml

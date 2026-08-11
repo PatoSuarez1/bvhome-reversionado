@@ -5,8 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Producto — BV Home</title>
 <meta name="description" content="Ficha de producto BV Home: medidas, materiales, colores, cuotas y disponibilidad.">
-<meta name="theme-color" content="#F5F3ED">
+<meta name="theme-color" content="#F5F3ED" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131210" media="(prefers-color-scheme: dark)">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<!-- canonical, Open Graph y JSON-LD del producto los completa producto.js
+     segun el ?id=, porque el catalogo es un solo archivo de datos -->
+<meta property="og:type" content="product">
+<meta property="og:site_name" content="BV Home">
+<meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="icon" href="assets/img/logo.webp">
+<link rel="apple-touch-icon" href="assets/img/icon-180.png">
+<link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,6 +25,7 @@
 <script>try{var t=JSON.parse(localStorage.getItem('bv_theme'));document.documentElement.dataset.theme=t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
 </head>
 <body>
+<a class="skip" href="#pdpRoot">Saltar al contenido</a>
 
 <div class="marquee" aria-hidden="true">
   <div class="marquee__track">
@@ -58,7 +70,7 @@
   </div>
 </header>
 
-<main class="wrap" id="pdpRoot">
+<main class="wrap" id="pdpRoot" tabindex="-1">
   <div class="empty" style="padding:6rem 1rem"><p>Cargando…</p></div>
 </main>
 

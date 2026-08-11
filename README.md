@@ -76,6 +76,32 @@ En esta versión **recorté las fotos originales para sacarles el texto** y lo r
 
 ---
 
+## Lo técnico (lo que va por detrás)
+
+**SEO**
+- `title`, `description` y `canonical` propios por página. En las fichas se arman según el `?id=`.
+- **Datos estructurados JSON-LD**: `Organization` + `WebSite` con *SearchAction* en la home; `Product` + `Offer` + `BreadcrumbList` en cada ficha. Es lo que habilita que Google muestre precio, stock y migas en el resultado de búsqueda.
+- `sitemap.xml` con las 46 URLs y `robots.txt` que bloquea las combinaciones de filtros (evita miles de URLs duplicadas sin contenido propio).
+- Open Graph y Twitter Cards con imagen 1200×630, para que el link se vea bien al pegarlo en WhatsApp o Instagram.
+- Un solo `<h1>` por página, jerarquía de encabezados correcta y `alt` en todas las imágenes.
+
+**Rendimiento**
+- Imágenes en tres tamaños (480 / 768 / 1024) servidas con `srcset` + `sizes`: en celular se bajan 480 px, no 1024.
+- WebP en todo el catálogo, `loading="lazy"` fuera de pantalla, `fetchpriority="high"` y `preload` en la imagen del hero.
+- `width` y `height` en todas las imágenes para que no salte el layout mientras carga (CLS).
+- Cero dependencias, cero framework, cero build: cuatro archivos JS propios y una hoja de estilos.
+
+**Accesibilidad**
+- Link "saltar al contenido", foco visible, y foco atrapado y devuelto en carrito, filtros y buscador.
+- `aria-label` en todos los botones de ícono, `role="status"` en las notificaciones, `aria-modal` en los paneles.
+- Respeta `prefers-reduced-motion` y `prefers-color-scheme`.
+- Contraste verificado en claro y oscuro.
+
+**Otros**
+- `404.html` con la identidad del sitio, `site.webmanifest` e íconos para "agregar a pantalla de inicio".
+
+> Aclaración honesta: esto es lo que se puede resolver del lado del frontend. Lo que **no** cubre un sitio estático es lo de servidor —redirecciones 301, cabeceras de caché, hreflang, sitemap dinámico al publicar productos—. Eso entra recién cuando el sitio corre sobre un backend propio.
+
 ## Estructura
 
 ```

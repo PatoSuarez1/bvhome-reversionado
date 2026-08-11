@@ -1,0 +1,15 @@
+{
+  "name": "BV Home",
+  "short_name": "BV Home",
+  "description": "Muebles, decoracion y diseno accesible hecho en Argentina.",
+  "lang": "es-AR",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F5F3ED",
+  "theme_color": "#F5F3ED",
+  "icons": [
+    { "src": "assets/img/icon-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "assets/img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

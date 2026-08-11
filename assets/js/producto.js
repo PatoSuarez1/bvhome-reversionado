@@ -13,6 +13,69 @@ const cols = (p.colores || []).map(k => ({ k, ...TELAS[k] })).filter(c => c.nomb
 document.title = `${p.nombre} — BV Home`;
 Store.visit(p.id);
 
+/* ---------- SEO por producto ----------
+   Se arma en runtime porque las 40 fichas salen de un solo archivo de datos.
+   Google ejecuta JS, así que lee tanto el canonical como el JSON-LD. */
+const BASE = location.origin + location.pathname.replace(/producto\.html$/, '');
+const URL_ABS = `${BASE}producto.html?id=${p.id}`;
+const IMG_ABS = BASE + IMG(p);
+const resumen = `${p.desc} Medidas: ${p.medidas.an} × ${p.medidas.pr} × ${p.medidas.al} cm. `
+  + `${money(p.precio)} o ${money(transfer(p.precio))} con transferencia.`;
+
+/* devuelve el <meta> pedido, creándolo si no estaba */
+const meta = (attr, val) => {
+  let e = document.head.querySelector(`meta[${attr}="${val}"]`);
+  if (!e) { e = document.createElement('meta'); e.setAttribute(attr, val); document.head.append(e); }
+  return e;
+};
+let canon = document.head.querySelector('link[rel="canonical"]');
+if (!canon) { canon = document.createElement('link'); canon.rel = 'canonical'; document.head.append(canon); }
+canon.href = URL_ABS;
+document.querySelector('meta[name="description"]').content = resumen.slice(0, 300);
+meta('property', 'og:title').content = `${p.nombre} — BV Home`;
+meta('property', 'og:description').content = resumen.slice(0, 300);
+meta('property', 'og:url').content = URL_ABS;
+meta('property', 'og:image').content = IMG_ABS;
+meta('property', 'product:price:amount').content = String(p.precio);
+meta('property', 'product:price:currency').content = 'ARS';
+
+const ld = document.createElement('script');
+ld.type = 'application/ld+json';
+ld.textContent = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [{
+    '@type': 'Product',
+    name: p.nombre,
+    description: p.desc,
+    image: [IMG_ABS],
+    sku: p.id,
+    category: cat.nombre,
+    brand: { '@type': 'Brand', name: 'BV Home' },
+    material: p.materiales,
+    color: cols.map(c => c.nombre).join(', ') || undefined,
+    width:  { '@type': 'QuantitativeValue', value: p.medidas.an, unitCode: 'CMT' },
+    depth:  { '@type': 'QuantitativeValue', value: p.medidas.pr, unitCode: 'CMT' },
+    height: { '@type': 'QuantitativeValue', value: p.medidas.al, unitCode: 'CMT' },
+    offers: {
+      '@type': 'Offer',
+      url: URL_ABS,
+      priceCurrency: 'ARS',
+      price: p.precio,
+      availability: p.stock > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+      itemCondition: 'https://schema.org/NewCondition',
+      seller: { '@type': 'Organization', name: 'BV Home' }
+    }
+  }, {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE },
+      { '@type': 'ListItem', position: 2, name: cat.nombre, item: `${BASE}tienda.html?cat=${p.cat}` },
+      { '@type': 'ListItem', position: 3, name: p.nombre }
+    ]
+  }]
+});
+document.head.append(ld);
+
 /* Galería: foto de producto + tomas de ambiente reales */
 const ctx = p.cat === 'mesas' ? ['mesas-comedor.webp', 'room-arco.webp']
           : p.cat === 'deco'  ? ['deco-estante.webp', 'estar-marron.webp']
