@@ -448,5 +448,14 @@ const CONFIG = {
   ],
   envioGratisDesde: 200000,
   whatsapp: '541164340861',
-  instagram: 'bvhome.boutique'
+  instagram: 'bvhome.boutique',
+
+  /* Fabricación a medida: se ofrece cuando la pieza no entra en el ambiente */
+  aMedida: {
+    categorias: ['sillones', 'mesas', 'muebles'],  // en deco no aplica
+    recargo: 0.25,        // 25% sobre el precio de lista
+    margenPared: 20,      // cm que dejamos libres respecto de la pared
+    minEscala: 0.6,       // no achicamos por debajo del 60% del original
+    plazoExtra: 15        // días adicionales sobre el plazo estándar
+  }
 };
