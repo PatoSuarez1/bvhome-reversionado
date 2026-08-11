@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="es-AR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BV Home — Muebles y decoración de diseño</title>
+<meta name="description" content="Muebles, decoración y diseño accesible hecho en Argentina. Sillones, mesas y deco con envío a todo el país, 20% off con transferencia y 6 cuotas sin interés.">
+<meta name="theme-color" content="#F5F3ED">
+<link rel="icon" href="assets/img/logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>try{var t=JSON.parse(localStorage.getItem('bv_theme'));document.documentElement.dataset.theme=t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
+</head>
+<body>
+
+<!-- ===== Marquee ===== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>20% OFF con transferencia</span><span>·</span>
+    <span>6 cuotas sin interés</span><span>·</span>
+    <span>Envío gratis desde $200.000</span><span>·</span>
+    <span>Diseño y fabricación en Argentina</span><span>·</span>
+    <span>20% OFF con transferencia</span><span>·</span>
+    <span>6 cuotas sin interés</span><span>·</span>
+    <span>Envío gratis desde $200.000</span><span>·</span>
+    <span>Diseño y fabricación en Argentina</span><span>·</span>
+  </div>
+</div>
+
+<!-- ===== Header ===== -->
+<header class="header">
+  <div class="wrap header__bar">
+    <div style="display:flex;align-items:center">
+      <button class="icon-btn" id="menuBtn" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+      <nav class="nav" aria-label="Principal">
+        <div class="nav__item">
+          <a class="nav__link" href="tienda.html?cat=sillones">Sillones
+            <svg class="nav__caret" viewBox="0 0 24 24"><path d="M5 9l7 7 7-7"/></svg></a>
+          <div class="mega">
+            <div>
+              <h4>Por tipo</h4>
+              <a class="mega__l" href="tienda.html?cat=sillones&q=sofa">Sofás</a>
+              <a class="mega__l" href="tienda.html?cat=sillones&q=individual">Individuales</a>
+              <a class="mega__l" href="tienda.html?cat=sillones&q=puff">Puffs</a>
+              <a class="mega__l" href="tienda.html?cat=sillones&q=divan">Divanes</a>
+              <a class="mega__l" href="tienda.html?cat=sillones&q=modular">Modulares</a>
+            </div>
+            <div>
+              <h4>Por material</h4>
+              <a class="mega__l" href="tienda.html?cat=sillones&q=boucle">Bouclé</a>
+              <a class="mega__l" href="tienda.html?cat=sillones&q=pana">Pana</a>
+              <a class="mega__l" href="tienda.html?cat=sillones&q=lino">Lino</a>
+              <a class="mega__l" href="tienda.html?cat=sillones&q=chenille">Chenille</a>
+            </div>
+            <a class="mega__promo" href="tienda.html?cat=sillones&sort=nuevo">
+              <img src="assets/img/editorial/boucle-luz.webp" alt="Sillón bouclé" loading="lazy">
+              <span>Nuevos</span>
+            </a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a class="nav__link" href="tienda.html?cat=mesas">Mesas
+            <svg class="nav__caret" viewBox="0 0 24 24"><path d="M5 9l7 7 7-7"/></svg></a>
+          <div class="mega">
+            <div>
+              <h4>Por uso</h4>
+              <a class="mega__l" href="tienda.html?cat=mesas&q=comedor">De comedor</a>
+              <a class="mega__l" href="tienda.html?cat=mesas&q=auxiliar">Auxiliares</a>
+              <a class="mega__l" href="tienda.html?cat=mesas&q=baja">Bajas / living</a>
+              <a class="mega__l" href="tienda.html?cat=mesas&q=redonda">Redondas</a>
+            </div>
+            <div>
+              <h4>Por comensales</h4>
+              <a class="mega__l" href="tienda.html?cat=mesas&q=6 personas">6 personas</a>
+              <a class="mega__l" href="tienda.html?cat=mesas&q=8 personas">8 personas</a>
+              <a class="mega__l" href="tienda.html?cat=mesas&q=roble">Roble macizo</a>
+            </div>
+            <a class="mega__promo" href="tienda.html?cat=mesas">
+              <img src="assets/img/editorial/mesas-comedor.webp" alt="Mesas de comedor" loading="lazy">
+              <span>Comedor</span>
+            </a>
+          </div>
+        </div>
+        <div class="nav__item"><a class="nav__link" href="tienda.html?cat=muebles">Muebles</a></div>
+        <div class="nav__item"><a class="nav__link" href="tienda.html?cat=deco">Deco</a></div>
+        <div class="nav__item"><a class="nav__link" href="tienda.html">Todo</a></div>
+      </nav>
+    </div>
+
+    <a class="header__logo" href="index.html" aria-label="BV Home — inicio">
+      <img src="assets/img/logo.webp" alt="BV Home" width="480" height="192">
+    </a>
+
+    <div class="header__actions">
+      <button class="icon-btn" id="searchBtn" aria-label="Buscar (Ctrl+K)">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg></button>
+      <button class="icon-btn" id="themeBtn" aria-label="Cambiar tema"></button>
+      <button class="icon-btn" id="favBtn" aria-label="Favoritos">
+        <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.3A4 4 0 0 1 12 8a4 4 0 0 1 7 2.7C19 15.4 12 20 12 20z"/></svg>
+        <span class="badge-count" data-fav-count>0</span></button>
+      <button class="icon-btn" id="cartBtn" aria-label="Carrito">
+        <svg viewBox="0 0 24 24"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg>
+        <span class="badge-count" data-cart-count>0</span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="hero__media">
+    <img src="assets/img/editorial/sofa-sol.webp" alt="Living con sofá crudo y mesa baja de madera" fetchpriority="high" width="1029" height="887">
+    <div class="hero__copy">
+      <p class="eyebrow">Colección 2026</p>
+      <h1 class="display">La calma<br>también se<br><em>diseña.</em></h1>
+      <p>Muebles y objetos que bajan el ruido de la casa. Fabricados en Argentina, pensados para durar.</p>
+      <div class="hero__cta">
+        <a class="btn btn-lg" href="tienda.html">Ver la colección</a>
+        <a class="btn btn-ghost btn-lg" href="#ambientes">Comprar por ambiente</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="hero__stats">
+      <div><strong>20%</strong><span>off con transferencia</span></div>
+      <div><strong>6</strong><span>cuotas sin interés</span></div>
+      <div><strong>+40</strong><span>piezas en catálogo</span></div>
+      <div><strong>100%</strong><span>producción nacional</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Categorías ===== -->
+<section class="section wrap">
+  <div class="sec-head">
+    <div class="reveal">
+      <p class="eyebrow">Categorías</p>
+      <h2 class="h2">Empezá por acá</h2>
+    </div>
+    <a class="link-u reveal" href="tienda.html">Ver todo el catálogo →</a>
+  </div>
+  <div class="cats" id="cats"></div>
+</section>
+
+<!-- ===== Destacados ===== -->
+<section class="section-tight wrap">
+  <div class="sec-head">
+    <div class="reveal">
+      <p class="eyebrow">Los que más se van</p>
+      <h2 class="h2">Destacados</h2>
+    </div>
+    <div class="rail-nav reveal">
+      <button data-rail="#railDest" data-dir="-1" aria-label="Anterior">
+        <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button data-rail="#railDest" data-dir="1" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+  <div class="rail" id="railDest"></div>
+</section>
+
+<!-- ===== Ambiente shoppable ===== -->
+<section class="section wrap" id="ambientes">
+  <div class="sec-head">
+    <div class="reveal">
+      <p class="eyebrow">Comprá el ambiente</p>
+      <h2 class="h2">Tocá la foto,<br>llevate el look</h2>
+      <p class="lede">Cada punto es un producto real. Sumá el ambiente entero al carrito en un clic.</p>
+    </div>
+  </div>
+
+  <div class="look__tabs reveal" id="lookTabs"></div>
+
+  <div class="shop-look">
+    <div class="look__stage reveal" id="lookStage"></div>
+    <div class="reveal reveal-d2">
+      <h3 class="h3" id="lookTitle"></h3>
+      <p class="muted" id="lookCopy" style="margin:.5rem 0 1.2rem;font-size:.88rem"></p>
+      <ul class="look__list" id="lookList"></ul>
+      <div style="display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;margin-top:1.4rem">
+        <button class="btn" id="lookAdd">Sumar el ambiente</button>
+        <span class="muted tnum" id="lookTotal" style="font-size:.85rem"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Editorial ===== -->
+<section class="section wrap">
+  <div class="split">
+    <div class="reveal">
+      <img src="assets/img/editorial/estar-marron.webp" alt="Sillones curvos en chocolate con mesa baja" loading="lazy">
+    </div>
+    <div class="reveal reveal-d2">
+      <p class="eyebrow">Quiénes somos</p>
+      <h2 class="h2" style="margin:.7rem 0 1.1rem">Menos, pero mejor</h2>
+      <p class="lede">Empezamos en 2018 haciendo comunicación para otras marcas. Aprendimos que lo simple es lo más difícil de lograr —y lo que más dura.</p>
+      <p class="lede" style="margin-top:1rem">Hoy fabricamos muebles con esa misma idea: piezas sin ruido, con materiales nobles, que se llevan bien con lo que ya tenés en casa.</p>
+      <div style="display:flex;gap:2.4rem;margin:2rem 0 1.8rem;flex-wrap:wrap">
+        <div><strong style="font-family:var(--serif);font-size:2rem;display:block;line-height:1">2018</strong><span class="muted" style="font-size:.78rem">desde</span></div>
+        <div><strong style="font-family:var(--serif);font-size:2rem;display:block;line-height:1">AR</strong><span class="muted" style="font-size:.78rem">fabricación propia</span></div>
+        <div><strong style="font-family:var(--serif);font-size:2rem;display:block;line-height:1">24</strong><span class="muted" style="font-size:.78rem">meses de garantía</span></div>
+      </div>
+      <a class="link-u" href="tienda.html">Ver la colección →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Novedades ===== -->
+<section class="section-tight wrap">
+  <div class="sec-head">
+    <div class="reveal">
+      <p class="eyebrow">Recién llegados</p>
+      <h2 class="h2">Novedades</h2>
+    </div>
+    <a class="link-u reveal" href="tienda.html?sort=nuevo">Ver todas →</a>
+  </div>
+  <div class="grid-p" id="gridNuevo"></div>
+</section>
+
+<!-- ===== Valores ===== -->
+<section class="section-tight">
+  <div class="values">
+    <div class="reveal">
+      <svg viewBox="0 0 24 24"><path d="M3 7h13v10H3zM16 10h3.5l1.5 3v4h-5z"/><circle cx="7" cy="17" r="1.6"/><circle cx="18" cy="17" r="1.6"/></svg>
+      <h4>Envío a todo el país</h4>
+      <p>Gratis superando los $200.000. Coordinamos día y franja horaria por WhatsApp.</p>
+    </div>
+    <div class="reveal reveal-d1">
+      <svg viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><path d="M2.5 10h19"/></svg>
+      <h4>20% off con transferencia</h4>
+      <p>O 6 cuotas sin interés con tarjeta. El precio final lo ves antes de pagar.</p>
+    </div>
+    <div class="reveal reveal-d2">
+      <svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.2-2.9 7.6-7 9-4.1-1.4-7-4.8-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+      <h4>24 meses de garantía</h4>
+      <p>Estructura y tapizado. Si algo falla, lo resolvemos nosotros.</p>
+    </div>
+    <div class="reveal reveal-d3">
+      <svg viewBox="0 0 24 24"><path d="M20 11.8A7.9 7.9 0 0 1 8.2 18.8L4 20l1.2-4.1A7.9 7.9 0 1 1 20 11.8z"/></svg>
+      <h4>Asesoramiento real</h4>
+      <p>Mandanos la foto de tu ambiente y te decimos qué entra y qué no.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Visto recientemente ===== -->
+<section class="section-tight wrap hide" id="seenSec">
+  <div class="sec-head">
+    <div><p class="eyebrow">Seguí donde dejaste</p><h2 class="h2">Visto recientemente</h2></div>
+  </div>
+  <div class="rail" id="railSeen"></div>
+</section>
+
+<!-- ===== Newsletter ===== -->
+<section class="section wrap">
+  <div class="news reveal">
+    <p class="eyebrow" style="color:inherit;opacity:.7">Lista privada</p>
+    <h2 class="h2" style="margin:.6rem 0">Enterate antes que nadie</h2>
+    <p>Preventas, reposiciones y descuentos que no publicamos. Un mail por mes, sin vueltas.</p>
+    <form id="newsForm">
+      <input type="email" placeholder="tu@email.com" required aria-label="Tu email">
+      <button class="btn" type="submit">Sumarme</button>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__logo"><img src="assets/img/logo.webp" alt="BV Home" width="480" height="192"></div>
+        <p class="muted" style="font-size:.85rem;max-width:32ch">Muebles, decoración y diseño accesible hecho en Argentina.</p>
+        <div class="socials">
+          <a href="https://instagram.com/bvhome.boutique" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+          <a href="https://wa.me/541164340861" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M20 11.8A7.9 7.9 0 0 1 8.2 18.8L4 20l1.2-4.1A7.9 7.9 0 1 1 20 11.8z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Tienda</h4>
+        <ul>
+          <li><a href="tienda.html?cat=sillones">Sillones y sofás</a></li>
+          <li><a href="tienda.html?cat=mesas">Mesas</a></li>
+          <li><a href="tienda.html?cat=muebles">Muebles</a></li>
+          <li><a href="tienda.html?cat=deco">Deco</a></li>
+          <li><a href="tienda.html?sort=nuevo">Novedades</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ayuda</h4>
+        <ul>
+          <li><a href="#">Envíos y entregas</a></li>
+          <li><a href="#">Medios de pago</a></li>
+          <li><a href="#">Política de devolución</a></li>
+          <li><a href="#">Cuidado de materiales</a></li>
+          <li><a href="#">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://wa.me/541164340861" target="_blank" rel="noopener">+54 11 6434-0861</a></li>
+          <li><a href="https://instagram.com/bvhome.boutique" target="_blank" rel="noopener">@bvhome.boutique</a></li>
+          <li><a href="#">Showroom con cita previa</a></li>
+          <li><a href="#">Proyectos y mayoristas</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 BV Home. Rediseño conceptual.</span>
+      <span>Diseño y fabricación en Argentina</span>
+    </div>
+  </div>
+</footer>
+
+<div class="demo-tag">Demo · datos de catálogo reales, specs de ejemplo</div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/home.js"></script>
+</body>
+</html>

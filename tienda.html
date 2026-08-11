@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="es-AR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tienda — BV Home</title>
+<meta name="description" content="Catálogo completo de BV Home: sillones, sofás, mesas, muebles y decoración. Filtrá por categoría, color, precio y disponibilidad.">
+<meta name="theme-color" content="#F5F3ED">
+<link rel="icon" href="assets/img/logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>try{var t=JSON.parse(localStorage.getItem('bv_theme'));document.documentElement.dataset.theme=t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
+</head>
+<body>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>20% OFF con transferencia</span><span>·</span>
+    <span>6 cuotas sin interés</span><span>·</span>
+    <span>Envío gratis desde $200.000</span><span>·</span>
+    <span>Diseño y fabricación en Argentina</span><span>·</span>
+    <span>20% OFF con transferencia</span><span>·</span>
+    <span>6 cuotas sin interés</span><span>·</span>
+    <span>Envío gratis desde $200.000</span><span>·</span>
+    <span>Diseño y fabricación en Argentina</span><span>·</span>
+  </div>
+</div>
+
+<header class="header">
+  <div class="wrap header__bar">
+    <div style="display:flex;align-items:center">
+      <button class="icon-btn" id="menuBtn" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+      <nav class="nav" aria-label="Principal">
+        <div class="nav__item"><a class="nav__link" href="tienda.html?cat=sillones">Sillones</a></div>
+        <div class="nav__item"><a class="nav__link" href="tienda.html?cat=mesas">Mesas</a></div>
+        <div class="nav__item"><a class="nav__link" href="tienda.html?cat=muebles">Muebles</a></div>
+        <div class="nav__item"><a class="nav__link" href="tienda.html?cat=deco">Deco</a></div>
+        <div class="nav__item"><a class="nav__link" href="tienda.html">Todo</a></div>
+      </nav>
+    </div>
+    <a class="header__logo" href="index.html" aria-label="BV Home — inicio">
+      <img src="assets/img/logo.webp" alt="BV Home" width="480" height="192">
+    </a>
+    <div class="header__actions">
+      <button class="icon-btn" id="searchBtn" aria-label="Buscar (Ctrl+K)">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg></button>
+      <button class="icon-btn" id="themeBtn" aria-label="Cambiar tema"></button>
+      <button class="icon-btn" id="favBtn" aria-label="Favoritos">
+        <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.3A4 4 0 0 1 12 8a4 4 0 0 1 7 2.7C19 15.4 12 20 12 20z"/></svg>
+        <span class="badge-count" data-fav-count>0</span></button>
+      <button class="icon-btn" id="cartBtn" aria-label="Carrito">
+        <svg viewBox="0 0 24 24"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg>
+        <span class="badge-count" data-cart-count>0</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="shop-head">
+    <nav class="muted" style="font-size:.76rem;margin-bottom:.8rem" aria-label="Migas">
+      <a href="index.html">Inicio</a> / <span id="crumb">Tienda</span>
+    </nav>
+    <h1 class="h2" id="shopTitle">Toda la colección</h1>
+    <p class="lede" id="shopSub" style="margin-top:.6rem">Cuarenta piezas fabricadas en Argentina. Filtrá por lo que necesitás.</p>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <button class="chip" id="filtersBtn">
+      <svg viewBox="0 0 24 24"><path d="M3 6h18M6 12h12M10 18h4"/></svg>
+      Filtros <span id="fCount" class="hide"></span>
+    </button>
+    <div id="quickCats" style="display:flex;gap:.5rem;flex-wrap:wrap"></div>
+    <div class="toolbar__right">
+      <span class="count" id="resCount"></span>
+      <select class="sel" id="sortSel" aria-label="Ordenar">
+        <option value="rel">Relevancia</option>
+        <option value="nuevo">Novedades</option>
+        <option value="asc">Precio: menor a mayor</option>
+        <option value="desc">Precio: mayor a menor</option>
+        <option value="nombre">Nombre A–Z</option>
+      </select>
+      <div class="density">
+        <button data-dens="0" class="on" aria-label="Vista cómoda">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/></svg></button>
+        <button data-dens="1" aria-label="Vista compacta">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="5" height="5"/><rect x="10" y="3" width="5" height="5"/><rect x="17" y="3" width="5" height="5"/><rect x="3" y="10" width="5" height="5"/><rect x="10" y="10" width="5" height="5"/><rect x="17" y="10" width="5" height="5"/><rect x="3" y="17" width="5" height="5"/><rect x="10" y="17" width="5" height="5"/><rect x="17" y="17" width="5" height="5"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chips de filtros activos -->
+  <div id="activeChips" style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.4rem"></div>
+
+  <div class="grid-p" id="grid"></div>
+  <div id="noRes"></div>
+
+  <div style="text-align:center;padding:3rem 0 1rem">
+    <button class="btn btn-ghost" id="moreBtn">Ver más</button>
+  </div>
+
+</main>
+
+<!-- Panel de filtros -->
+<aside class="panel panel--left" id="filtersPanel" role="dialog" aria-label="Filtros">
+  <div class="panel__head"><h3>Filtros</h3>
+    <button class="icon-btn" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="panel__body">
+    <div class="filter-group">
+      <h4>Categoría</h4>
+      <div id="fCats"></div>
+    </div>
+    <div class="filter-group">
+      <h4>Precio máximo</h4>
+      <input type="range" class="range" id="fPrice" min="80000" max="4000000" step="10000" value="4000000">
+      <p class="tnum" style="font-size:.82rem;margin-top:.5rem">Hasta <b id="fPriceOut"></b></p>
+    </div>
+    <div class="filter-group">
+      <h4>Color / terminación</h4>
+      <div class="sw-pick" id="fColors"></div>
+    </div>
+    <div class="filter-group">
+      <h4>Disponibilidad</h4>
+      <label class="check"><input type="checkbox" id="fStock"> Solo con stock <span class="c-n" id="nStock"></span></label>
+      <label class="check"><input type="checkbox" id="fNew"> Solo novedades <span class="c-n" id="nNew"></span></label>
+    </div>
+  </div>
+  <div class="panel__foot" style="display:flex;gap:.6rem">
+    <button class="btn btn-ghost" id="clearBtn" style="flex:1">Limpiar</button>
+    <button class="btn" data-close style="flex:1">Ver resultados</button>
+  </div>
+</aside>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__logo"><img src="assets/img/logo.webp" alt="BV Home" width="480" height="192"></div>
+        <p class="muted" style="font-size:.85rem;max-width:32ch">Muebles, decoración y diseño accesible hecho en Argentina.</p>
+        <div class="socials">
+          <a href="https://instagram.com/bvhome.boutique" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+          <a href="https://wa.me/541164340861" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M20 11.8A7.9 7.9 0 0 1 8.2 18.8L4 20l1.2-4.1A7.9 7.9 0 1 1 20 11.8z"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Tienda</h4><ul>
+        <li><a href="tienda.html?cat=sillones">Sillones y sofás</a></li>
+        <li><a href="tienda.html?cat=mesas">Mesas</a></li>
+        <li><a href="tienda.html?cat=muebles">Muebles</a></li>
+        <li><a href="tienda.html?cat=deco">Deco</a></li>
+      </ul></div>
+      <div><h4>Ayuda</h4><ul>
+        <li><a href="#">Envíos y entregas</a></li>
+        <li><a href="#">Medios de pago</a></li>
+        <li><a href="#">Política de devolución</a></li>
+        <li><a href="#">Preguntas frecuentes</a></li>
+      </ul></div>
+      <div><h4>Contacto</h4><ul>
+        <li><a href="https://wa.me/541164340861" target="_blank" rel="noopener">+54 11 6434-0861</a></li>
+        <li><a href="https://instagram.com/bvhome.boutique" target="_blank" rel="noopener">@bvhome.boutique</a></li>
+        <li><a href="#">Showroom con cita previa</a></li>
+      </ul></div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 BV Home. Rediseño conceptual.</span>
+      <span>Diseño y fabricación en Argentina</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/tienda.js"></script>
+</body>
+</html>
