@@ -178,7 +178,7 @@ document.body.insertAdjacentHTML('beforeend', `
 </div>
 
 <div class="modal" id="qvModal" role="dialog" aria-label="Vista rápida">
-  <div class="scrim on" data-close style="position:absolute"></div>
+  <div class="modal__bg" data-close></div>
   <div class="modal__box" id="qvBox"></div>
 </div>
 `);

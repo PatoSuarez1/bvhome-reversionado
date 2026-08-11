@@ -419,6 +419,12 @@ ul, ol { list-style: none; padding: 0; }
 .socials svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; }
 
 /* ---------- 17. Drawer / Panel ---------- */
+/* Regla de oro de las capas: si está oculta, NO debe recibir clicks.
+   `visibility:hidden` no alcanza — un hijo puede volver a `visible`
+   y la capa entera se come el mouse aunque sea invisible. */
+.scrim, .modal, .search-ov, .panel { pointer-events: none; }
+.scrim.on, .modal.on, .search-ov.on, .panel.on { pointer-events: auto; }
+
 .scrim {
   position: fixed; inset: 0; z-index: 90; background: rgba(20,17,14,.42);
   backdrop-filter: blur(3px); opacity: 0; visibility: hidden; transition: opacity .4s var(--ease), visibility .4s;
@@ -488,6 +494,7 @@ ul, ol { list-style: none; padding: 0; }
   opacity: 0; visibility: hidden; transition: opacity .35s var(--ease), visibility .35s;
 }
 .modal.on { opacity: 1; visibility: visible; }
+.modal__bg { position: absolute; inset: 0; background: rgba(20,17,14,.42); backdrop-filter: blur(3px); }
 .modal__box {
   position: relative; z-index: 2; background: var(--surface); border-radius: 18px;
   width: min(880px, 100%); max-height: 90vh; overflow: auto;
