@@ -646,10 +646,17 @@ ul, ol { list-style: none; padding: 0; }
 }
 .hide { display: none !important; }
 .demo-tag {
+  pointer-events: none;              /* es un cartel, no debe tapar nada */
   position: fixed; left: 1rem; bottom: 1rem; z-index: 35;
   background: color-mix(in oklab, var(--surface) 92%, transparent); backdrop-filter: blur(8px);
   border: 1px solid var(--line); border-radius: 999px; padding: .45rem .9rem;
   font-size: .68rem; color: var(--muted); box-shadow: var(--shadow-sm);
+}
+
+/* En pantallas tactiles no hay hover: si quedaran en opacity:0 serian
+   botones invisibles pero clickeables encima de la foto. */
+@media (hover: none) {
+  .card__quick, .card__fav { opacity: 1; transform: none; }
 }
 
 /* ---------- 24. Responsive ---------- */
