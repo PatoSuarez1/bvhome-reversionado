@@ -326,6 +326,10 @@ ul, ol { list-style: none; padding: 0; }
   grid-template-columns: repeat(auto-fill, minmax(min(230px, 100%), 1fr));
 }
 .grid-p.dense { grid-template-columns: repeat(auto-fill, minmax(min(165px, 100%), 1fr)); }
+/* Grillas de cantidad conocida (novedades, relacionados): 4 columnas parejas.
+   Con auto-fill quedaban pistas vacías a la derecha, que es justo el vacío
+   que queremos evitar. */
+.grid-p.grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
 /* El riel sangra hasta el borde derecho: si corta con margen parece que
    el contenido se terminó, y así invita a arrastrar. */
@@ -775,6 +779,7 @@ svg.ico-brand { fill: currentColor; stroke: none; }
   .values > div:nth-child(odd)  { padding-left: 0; }
   .values > div:nth-child(n+3)  { border-top: 1px solid var(--line); }
   .footer__grid { grid-template-columns: 1fr 1fr; }
+  .grid-p.grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .shop-look { grid-template-columns: 1fr; }
   .pdp { grid-template-columns: 1fr; }
   .pdp__gal { position: static; }
@@ -801,7 +806,7 @@ svg.ico-brand { fill: currentColor; stroke: none; }
   .values > div + div { border-top: 1px solid var(--line); }
   .footer__grid { grid-template-columns: 1fr; }
   .grid-p { grid-template-columns: repeat(2, 1fr); gap: 1rem .7rem; }
-  .grid-p.dense { grid-template-columns: repeat(2, 1fr); }
+  .grid-p.dense, .grid-p.grid-4 { grid-template-columns: repeat(2, 1fr); }
   .card__quick { opacity: 1; transform: none; }
   .card__fav { opacity: 1; transform: none; }
   .hero__media { height: 74vh; }

@@ -233,7 +233,7 @@ $('#pdpRoot').innerHTML = `
 <!-- Relacionados -->
 <section class="section-tight">
   <div class="sec-head"><div><p class="eyebrow">Combina bien con</p><h2 class="h2">Completá el ambiente</h2></div></div>
-  <div class="grid-p" id="rel"></div>
+  <div class="grid-p grid-4" id="rel"></div>
 </section>
 
 <!-- Visto recientemente -->
