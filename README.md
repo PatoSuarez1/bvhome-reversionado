@@ -51,13 +51,14 @@ Overlay a pantalla completa, `Ctrl/⌘ + K`, insensible a tildes y mayúsculas (
 
 > La pregunta nº 1 en muebles es "¿me entra?". Contestarla en la ficha saca consultas de encima y baja devoluciones.
 
-### 6 bis. Si no entra, se la fabricamos
-Acá está el remate. Cuando el verificador da que **no entra**, en vez de dejar al cliente con un "no", aparece una propuesta de fabricación a medida:
+### 6 bis. La fabricamos en la medida que quieras
+Acá está el remate, y está **siempre disponible**, no sólo cuando algo falla:
 
-- Propone sola las dimensiones que sí entran en ese ambiente (el ancho declarado menos 20 cm de respiro, sin achicar por debajo del 60% del original).
-- El diagrama pasa de rojo desbordado a verde entrando: se ve que ahora sí.
-- Da un precio estimado. Achicar no abarata —el trabajo de fabricación es el mismo— y agrandar suma material. Recargo del 25% sobre lista.
-- Botón de presupuesto por WhatsApp con las medidas del ambiente y las de la pieza ya escritas.
+- Si la pieza **no entra**, la propuesta se abre sola con las dimensiones que sí entran (el ancho del ambiente menos 20 cm de respiro, sin achicar por debajo del 60% del original). El diagrama pasa de rojo desbordado a verde entrando.
+- Si la pieza **entra pero la querés distinta**, hay un botón "La quiero en otra medida" que abre lo mismo, partiendo de la medida estándar.
+- Da un precio estimado en vivo. Achicar no abarata —el trabajo de fabricación es el mismo— y agrandar suma material. Recargo del 25% sobre lista.
+- Botón de presupuesto por WhatsApp con las medidas del ambiente y las de la pieza ya escritas. El mensaje cambia según si entraba o no.
+- Rangos declarados en la ficha: ambiente de 1 a 15 m; fabricación de 60 a 400 cm de ancho y de 40 a 200 cm de fondo. Se acotan al salir del campo, no mientras se tipea.
 - Sólo aparece donde tiene sentido: sillones, mesas y muebles. En deco, no.
 
 > Esta es **la** diferencia. Una tienda enlatada convierte "no me entra" en una venta perdida. Acá la convierte en una consulta de fabricación a medida, que además es el trabajo de mayor margen. BV Home fabrica: el sitio debería vender eso, y hoy no lo hace en ningún lado.
