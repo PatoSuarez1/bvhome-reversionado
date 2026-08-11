@@ -32,7 +32,7 @@ const CATALOGO = [
   /* ---------------- SILLONES Y SOFÁS ---------------- */
   {
     id: 'sofa-eden', nombre: 'Sofá Edén', cat: 'sillones', precio: 3899000, img: 'eden.webp',
-    nuevo: true, destacado: true, stock: 4, entrega: '30 a 45 días',
+    destacado: true, stock: 4, entrega: '30 a 45 días',
     colores: ['chocolate', 'arena', 'crudo', 'oliva'],
     medidas: { an: 260, pr: 100, al: 78 }, asientos: 3,
     materiales: 'Estructura de eucalipto secado en horno, espuma alta densidad y plumón siliconado.',
@@ -59,7 +59,7 @@ const CATALOGO = [
   },
   {
     id: 'sillon-vika', nombre: 'Sillón Vika', cat: 'sillones', precio: 2960000, img: 'vika.webp',
-    stock: 2, entrega: '30 a 45 días',
+    destacado: true, stock: 2, entrega: '30 a 45 días',
     colores: ['arena', 'crudo', 'humo'],
     medidas: { an: 205, pr: 92, al: 76 }, asientos: 2,
     materiales: 'Tapizado en lino texturado, patas de madera a la vista.',
@@ -68,7 +68,7 @@ const CATALOGO = [
   },
   {
     id: 'sofa-sena', nombre: 'Sofá Sena', cat: 'sillones', precio: 2869900, img: 'sena.webp',
-    nuevo: true, destacado: true, stock: 5, entrega: '30 a 45 días',
+    nuevo: true, stock: 5, entrega: '30 a 45 días',
     colores: ['crudo', 'arena', 'chocolate'],
     medidas: { an: 240, pr: 96, al: 75 }, asientos: 3,
     materiales: 'Espuma soft touch y fibra siliconada. Funda desmontable.',
@@ -77,7 +77,7 @@ const CATALOGO = [
   },
   {
     id: 'divan-sahara', nombre: 'Diván Sahara', cat: 'sillones', precio: 2129000, img: 'sahara.webp',
-    nuevo: true, destacado: true, stock: 3, entrega: '25 a 40 días',
+    nuevo: true, stock: 3, entrega: '25 a 40 días',
     colores: ['chocolate', 'arena', 'terracota'],
     medidas: { an: 180, pr: 80, al: 68 }, asientos: 2,
     materiales: 'Tapizado en suede ecológico, relleno de espuma HR.',
@@ -86,7 +86,7 @@ const CATALOGO = [
   },
   {
     id: 'sillon-luma', nombre: 'Sillón Luma', cat: 'sillones', precio: 1869000, img: 'luma.webp',
-    nuevo: true, destacado: true, stock: 6, entrega: '25 a 40 días',
+    nuevo: true, stock: 6, entrega: '25 a 40 días',
     colores: ['boucle', 'crudo', 'arena', 'chocolate'],
     medidas: { an: 165, pr: 88, al: 74 }, asientos: 2,
     materiales: 'Bouclé de algodón reciclado sobre estructura de pino.',
@@ -131,7 +131,7 @@ const CATALOGO = [
   },
   {
     id: 'sillon-aura', nombre: 'Sillón Individual Aura', cat: 'sillones', precio: 969000, img: 'aura.webp',
-    nuevo: true, destacado: true, stock: 6, entrega: '20 a 35 días',
+    nuevo: true, stock: 6, entrega: '20 a 35 días',
     colores: ['arena', 'chocolate', 'crudo'],
     medidas: { an: 86, pr: 84, al: 76 }, asientos: 1,
     materiales: 'Tapizado en pana, base de madera maciza.',
@@ -187,7 +187,7 @@ const CATALOGO = [
   /* ---------------- MESAS ---------------- */
   {
     id: 'mesa-sienna', nombre: 'Mesa de comedor Sienna', cat: 'mesas', precio: 2890000, img: 'sienna.webp',
-    nuevo: true, destacado: true, stock: 2, entrega: '35 a 50 días',
+    nuevo: true, stock: 2, entrega: '35 a 50 días',
     colores: ['nogal', 'roble', 'grafito'],
     medidas: { an: 240, pr: 100, al: 76 }, comensales: 8,
     materiales: 'Tapa de roble macizo con terminación al agua. Base escultórica.',
@@ -232,7 +232,7 @@ const CATALOGO = [
   },
   {
     id: 'mesa-nuvia', nombre: 'Mesa Nuvia', cat: 'mesas', precio: 1999000, img: 'nuvia.webp',
-    nuevo: true, destacado: true, stock: 4, entrega: '30 a 45 días',
+    nuevo: true, stock: 4, entrega: '30 a 45 días',
     colores: ['roble', 'nogal'],
     medidas: { an: 160, pr: 90, al: 76 }, comensales: 6,
     materiales: 'Madera maciza, base de doble pata.',
@@ -268,7 +268,7 @@ const CATALOGO = [
   },
   {
     id: 'set-sora', nombre: 'Set de Mesas Sōra', cat: 'mesas', precio: 1890000, img: 'sora.webp',
-    nuevo: true, destacado: true, stock: 5, entrega: '25 a 40 días',
+    nuevo: true, stock: 5, entrega: '25 a 40 días',
     colores: ['nogal', 'grafito'],
     medidas: { an: 90, pr: 90, al: 38 },
     materiales: 'Set de dos mesas que se guardan una debajo de la otra.',
@@ -403,37 +403,37 @@ const AMBIENTES = [
   {
     id: 'living-sol',
     titulo: 'Living luminoso',
-    copy: 'Blancos rotos, madera oscura y sombra de ventana. El ambiente más pedido del año.',
+    copy: 'Blancos rotos, madera oscura y sombra de ventana. El ambiente mas pedido del ano.',
     img: 'sofa-sol.webp',
     puntos: [
-      { x: 45, y: 55, producto: 'sofa-sena' },
-      { x: 32, y: 78, producto: 'mesa-domo' },
-      { x: 20, y: 47, producto: 'almohadon-nudo' },
-      { x: 68, y: 50, producto: 'almohadon-kai-ow' }
+      { x: 52, y: 62, producto: 'sofa-sena' },
+      { x: 40, y: 84, producto: 'mesa-domo' },
+      { x: 18, y: 44, producto: 'almohadon-akari' },
+      { x: 28, y: 54, producto: 'almohadon-nudo' },
+      { x: 68, y: 47, producto: 'almohadon-kai-ow' }
     ]
   },
   {
     id: 'estar-marron',
     titulo: 'Estar en chocolate',
-    copy: 'Dos sillones curvos enfrentados y una mesa baja maciza en el medio.',
+    copy: 'Dos poltronas curvas enfrentadas y una mesa baja maciza en el medio.',
     img: 'estar-marron.webp',
     puntos: [
-      { x: 17, y: 30, producto: 'sillon-duna' },
-      { x: 74, y: 27, producto: 'poltrona-aura' },
-      { x: 43, y: 55, producto: 'mesa-koa' },
-      { x: 76, y: 15, producto: 'almohadon-yura' }
+      { x: 16, y: 30, producto: 'poltrona-aura' },
+      { x: 43, y: 45, producto: 'mesa-koa' },
+      { x: 74, y: 13, producto: 'almohadon-kai' }
     ]
   },
   {
     id: 'arco',
-    titulo: 'Rincón del arco',
-    copy: 'Luz indirecta, textiles crudos y volúmenes bajos.',
+    titulo: 'Rincon del arco',
+    copy: 'Luz indirecta, textiles crudos y volumenes bajos.',
     img: 'room-arco.webp',
     puntos: [
-      { x: 30, y: 63, producto: 'sillon-nuvo-xl' },
-      { x: 66, y: 58, producto: 'divan-sahara' },
-      { x: 62, y: 79, producto: 'mesa-noir' },
-      { x: 73, y: 57, producto: 'almohadon-akari' }
+      { x: 31, y: 66, producto: 'nuvo-respaldo' },
+      { x: 60, y: 63, producto: 'divan-sahara' },
+      { x: 62, y: 82, producto: 'mesa-koa' },
+      { x: 73, y: 58, producto: 'almohadon-akari' }
     ]
   }
 ];

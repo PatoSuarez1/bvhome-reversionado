@@ -331,15 +331,20 @@ ul, ol { list-style: none; padding: 0; }
    que queremos evitar. */
 .grid-p.grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
-/* El riel sangra hasta el borde derecho: si corta con margen parece que
-   el contenido se terminó, y así invita a arrastrar. */
+/* El riel respeta el contenedor como todo lo demás: sangrarlo hasta el
+   borde cortaba las tarjetas contra el vidrio y quedaba sucio.
+   `overflow-y: hidden` es obligatorio: con overflow-x en auto el eje Y
+   pasa a auto solo, y el translateY del reveal generaba un scroll
+   vertical de unos pocos píxeles dentro del riel. */
 .rail {
   display: flex; gap: clamp(.8rem, 1.4vw, 1.4rem);
-  overflow-x: auto; scroll-snap-type: x mandatory;
+  overflow-x: auto; overflow-y: hidden;
+  scroll-snap-type: x mandatory;
   padding-bottom: .6rem; scrollbar-width: none;
-  margin-right: calc(50% - 50vw);
-  padding-right: var(--pad);
 }
+/* Dentro del riel el reveal sólo funde, no desplaza: si desplazara,
+   `overflow-y: hidden` le cortaría el pie a la tarjeta. */
+.rail .reveal { transform: none; }
 .rail::-webkit-scrollbar { display: none; }
 .rail > * { flex: 0 0 clamp(200px, 23vw, 300px); scroll-snap-align: start; }
 .rail-nav { display: flex; gap: .4rem; }
