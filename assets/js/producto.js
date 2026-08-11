@@ -152,10 +152,11 @@ $('#pdpRoot').innerHTML = `
           <div class="fit__obj" id="fitObj"><span>${p.medidas.an}×${p.medidas.pr}</span></div>
         </div>
         <div class="fit__row">
-          <label>Ancho</label><input type="number" id="fitW" value="350" min="50" max="1200"> <span class="muted" style="font-size:.75rem">cm</span>
-          <label style="margin-left:.6rem">Profundidad</label><input type="number" id="fitD" value="300" min="50" max="1200"> <span class="muted" style="font-size:.75rem">cm</span>
+          <label>Ancho</label><input type="number" id="fitW" value="350" min="100" max="1500" step="10"> <span class="muted" style="font-size:.75rem">cm</span>
+          <label style="margin-left:.6rem">Profundidad</label><input type="number" id="fitD" value="300" min="100" max="1500" step="10"> <span class="muted" style="font-size:.75rem">cm</span>
         </div>
         <p class="fit__verdict" id="fitOut"></p>
+        <button class="fit__toggle hide" id="cusToggle">La quiero en otra medida →</button>
 
         <!-- Si no entra, no perdemos la venta: la fabricamos -->
         <div class="custom hide" id="fitCustom">
@@ -170,8 +171,8 @@ $('#pdpRoot').innerHTML = `
             </div>
           </div>
           <div class="custom__dims">
-            <label>Ancho <input type="number" id="cusW" min="40" max="400"> <span>cm</span></label>
-            <label>Fondo <input type="number" id="cusD" min="40" max="200"> <span>cm</span></label>
+            <label>Ancho <input type="number" id="cusW" min="60" max="400" step="5"> <span>cm</span></label>
+            <label>Fondo <input type="number" id="cusD" min="40" max="200" step="5"> <span>cm</span></label>
           </div>
           <div class="custom__price">
             <span>Estimado a medida</span>
@@ -289,6 +290,17 @@ drawPay();
 const AM = CONFIG.aMedida;
 const haceAMedida = AM.categorias.includes(p.cat);
 let cusEditado = false;   // si el usuario tocó las medidas, no se las pisamos
+let cusAbierto = false;   // lo abrió a mano aunque la pieza sí entrara
+
+/* Límites: el ambiente va de 1 a 15 m; la fabricación tiene un mínimo y un
+   máximo de taller. Se aplican al salir del campo, no mientras se tipea,
+   para no pisarle el número al usuario a mitad de escribir. */
+const LIM = {
+  amb: { min: 100, max: 1500 },
+  an:  { min: 60,  max: 400 },
+  pr:  { min: 40,  max: 200 }
+};
+const clamp = (v, l) => Math.min(l.max, Math.max(l.min, v));
 
 /* Medida que sí entraría, redondeada a 5 cm y sin achicar de más */
 const sugerida = (W, D) => {
@@ -307,28 +319,32 @@ function drawCustom() {
   $('#cusPrice').textContent = money(est);
   $('#cusNote').innerHTML =
     `${money(transfer(est))} con transferencia · suma unos ${AM.plazoExtra} días al plazo normal.<br>`
-    + `Achicar no abarata —el trabajo de fabricación es el mismo—; agrandar sí suma material.`;
+    + `Achicar no abarata —el trabajo de fabricación es el mismo—; agrandar sí suma material.<br>`
+    + `<span class="muted">Fabricamos de ${LIM.an.min} a ${LIM.an.max} cm de ancho y de ${LIM.pr.min} a ${LIM.pr.max} cm de fondo.</span>`;
 }
 
 function drawFit() {
   const W = +$('#fitW').value || 0, D = +$('#fitD').value || 0;
   const { an, pr } = p.medidas;
   const entra = an <= W && pr <= D;
-  const cus = $('#fitCustom');
-  const ofrecer = !entra && haceAMedida;
 
-  /* Mostrar u ocultar la propuesta a medida */
-  cus.classList.toggle('hide', !ofrecer);
-  if (ofrecer && !cusEditado) {
-    const s = sugerida(W, D);
-    $('#cusW').value = s.an;
-    $('#cusD').value = s.pr;
+  /* La fabricación a medida está siempre disponible: se abre sola cuando
+     no entra, y a pedido cuando entra pero la quieren en otra medida. */
+  const mostrar = haceAMedida && (!entra || cusAbierto);
+  $('#fitCustom').classList.toggle('hide', !mostrar);
+  $('#cusToggle').classList.toggle('hide', !haceAMedida || mostrar);
+
+  if (mostrar && !cusEditado) {
+    /* Si no entra proponemos la que sí entra; si entra, partimos de la estándar */
+    const base = entra ? { an, pr } : sugerida(W, D);
+    $('#cusW').value = base.an;
+    $('#cusD').value = base.pr;
   }
-  if (ofrecer) drawCustom();
+  if (mostrar) drawCustom();
 
   /* El dibujo muestra la pieza estándar; si hay propuesta, muestra la a medida */
-  const dibAn = ofrecer ? (+$('#cusW').value || an) : an;
-  const dibPr = ofrecer ? (+$('#cusD').value || pr) : pr;
+  const dibAn = mostrar ? (+$('#cusW').value || an) : an;
+  const dibPr = mostrar ? (+$('#cusD').value || pr) : pr;
   const cabe = dibAn <= W && dibPr <= D;
   const obj = $('#fitObj');
   const box = $('.fit__viz').getBoundingClientRect();
@@ -351,19 +367,33 @@ function drawFit() {
         : '');
 }
 
-$('#fitW').addEventListener('input', drawFit);
-$('#fitD').addEventListener('input', drawFit);
-$('#cusW').addEventListener('input', () => { cusEditado = true; drawFit(); });
-$('#cusD').addEventListener('input', () => { cusEditado = true; drawFit(); });
+/* Recalcula mientras se tipea; al salir del campo, acota al rango válido */
+function bindNum(sel, lim, marcaEditado) {
+  const el = $(sel);
+  el.addEventListener('input', () => { if (marcaEditado) cusEditado = true; drawFit(); });
+  el.addEventListener('change', () => {
+    el.value = clamp(+el.value || lim.min, lim);
+    drawFit();
+  });
+}
+bindNum('#fitW', LIM.amb, false);
+bindNum('#fitD', LIM.amb, false);
+bindNum('#cusW', LIM.an,  true);
+bindNum('#cusD', LIM.pr,  true);
+
+$('#cusToggle').addEventListener('click', () => { cusAbierto = true; drawFit(); });
 
 /* Presupuesto a medida por WhatsApp, con las medidas ya cargadas */
 $('#cusWa').addEventListener('click', e => {
   e.preventDefault();
   const anN = +$('#cusW').value, prN = +$('#cusD').value;
   const W = +$('#fitW').value, D = +$('#fitD').value;
+  const entra = p.medidas.an <= W && p.medidas.pr <= D;
+  const contexto = entra
+    ? `La medida estándar es ${p.medidas.an}×${p.medidas.pr} cm, pero la necesito distinta.`
+    : `En la medida estándar (${p.medidas.an}×${p.medidas.pr} cm) no me entra: mi ambiente mide ${W}×${D} cm.`;
   const msg = `¡Hola BV Home! Me interesa el ${p.nombre}`
-    + (color ? ` en ${color.nombre}` : '') + `, pero en la medida estándar `
-    + `(${p.medidas.an}×${p.medidas.pr} cm) no me entra: mi ambiente mide ${W}×${D} cm.\n\n`
+    + (color ? ` en ${color.nombre}` : '') + `.\n${contexto}\n\n`
     + `¿Me lo pueden fabricar de ${anN}×${prN} cm?\n`
     + `El estimado que vi en la web es ${money(precioAMedida(anN))}.\n\n`
     + `¿Me confirman precio y plazo?`;

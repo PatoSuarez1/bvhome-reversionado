@@ -674,6 +674,14 @@ ul, ol { list-style: none; padding: 0; }
 .fit__verdict.ok { color: var(--ok); }
 .fit__verdict.no { color: var(--sale); }
 .fit__hint { color: var(--ink-soft); font-weight: 500; }
+/* Siempre disponible: aunque la pieza entre, se puede pedir otra medida */
+.fit__toggle {
+  margin-top: .7rem; padding: .55rem 1rem;
+  border: 1px dashed var(--line); border-radius: 999px;
+  font-size: .76rem; font-weight: 600; color: var(--ink-soft);
+  transition: border-color .25s, color .25s, background .25s;
+}
+.fit__toggle:hover { border-style: solid; border-color: var(--accent); color: var(--accent); }
 
 /* ---- Propuesta de fabricación a medida ---- */
 .custom {
